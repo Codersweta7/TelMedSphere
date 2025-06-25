@@ -66,20 +66,6 @@ const Footer = () => {
                       </li>
                     );
                   })}
-                  {localStorage.getItem("usertype") === "patient" &&
-                    title === "Shop & More" && (
-                      <li className="transition-all duration-300 ease-in-out">
-                        <div className="flex items-center gap-2 hover:ml-2">
-                          <TfiAngleRight className="text-sm text-opacity-80" />
-                          <Link
-                            to="/doctors"
-                            className="text-sm opacity-80 hover:opacity-100 hover:underline hover:text-blue-500 transition-transform transform hover:translate-x-1"
-                          >
-                            Book an Appointment
-                          </Link>
-                        </div>
-                      </li>
-                    )}
                 </ul>
               </div>
             );

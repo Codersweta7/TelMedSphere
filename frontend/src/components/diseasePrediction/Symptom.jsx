@@ -16,6 +16,16 @@ class Symptom extends Component {
     "https://telmedsphere.onrender.com/predict";
 
   sendSymptomsToBackend = () => {
+    // Check if there are symptoms to send
+    if (!this.state.user_symptoms || this.state.user_symptoms.length === 0) {
+      console.error("No symptoms selected");
+      alert("Please select at least one symptom before proceeding.");
+      return;
+    }
+
+    console.log("Sending symptoms to backend:", this.state.user_symptoms);
+    console.log("Using API URL:", this.API_URL);
+
     fetch(this.API_URL, {
       method: "POST",
       headers: {
@@ -23,17 +33,26 @@ class Symptom extends Component {
       },
       body: JSON.stringify(this.state.user_symptoms),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Server responded with status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then((result) => {
-        if (result) {
+        console.log("Received result:", result);
+        if (result && Array.isArray(result) && result.length > 0) {
           this.setState({ disease_possibility: result });
           this.props.updateDiseasePossibility(result);
         } else {
-          console.log("else");
+          console.error("Invalid result format:", result);
+          this.props.updateDiseasePossibility([]);
         }
       })
       .catch((error) => {
         console.error("Error sending symptoms:", error);
+        alert("Failed to predict disease. Please try again or select different symptoms.");
+        this.props.updateDiseasePossibility([]);
       });
   };
 

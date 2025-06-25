@@ -95,9 +95,12 @@ class Disease extends Component {
             </div>
           ))}
         </div>
-        <div className="dark:text-white-1">
-          Always visit a doctor if you have any symptoms of a disease or call
-          your local hospital
+        <div className="mt-6 p-4 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200 dark:border-yellow-600 rounded shadow-md">
+          <p className="flex items-center font-bold">
+            <span className="mr-2">⚠️</span>
+            Always visit a doctor if you have any symptoms of a disease or call your local hospital
+          </p>
+          <p className="mt-1 text-sm">This tool is for informational purposes only and does not replace professional medical advice.</p>
         </div>
       </div>
     ) : (
@@ -108,9 +111,15 @@ class Disease extends Component {
         </div>
         <p>
           Cannot determine possible diseases due to lack of symptoms. Please
-          retry the analysis with actual symptoms or call your local hospital if
-          it is an emergency.
+          retry the analysis with actual symptoms.
         </p>
+        <div className="mt-6 p-4 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200 dark:border-yellow-600 rounded shadow-md">
+          <p className="flex items-center font-bold">
+            <span className="mr-2">⚠️</span>
+            Always visit a doctor if you have any symptoms of a disease or call your local hospital
+          </p>
+          <p className="mt-1 text-sm">This tool is for informational purposes only and does not replace professional medical advice.</p>
+        </div>
       </div>
     );
   };

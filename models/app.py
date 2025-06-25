@@ -29,22 +29,40 @@ def predict():
     
     if not data:
         return jsonify({'error': 'No symptoms provided'}), 400
+    
+    if len(data) < 2:
+        return jsonify({'error': 'At least 2 symptoms are required for accurate prediction'}), 400
 
+    # Count matched symptoms
+    matched_symptoms = 0
+    
     # Create feature vector
     features = [0] * len(symptoms)
     for symptom in data:
         if symptom in symptoms:
             index = symptoms.index(symptom)
             features[index] = 1
+            matched_symptoms += 1
         else:
             print(f"Symptom not found: {symptom}")
-
+    
     print("Feature Vector:", features)
+    print(f"Matched {matched_symptoms} symptoms out of {len(data)} provided")
+    
+    # Check if we have enough matched symptoms
+    if matched_symptoms < 2:
+        return jsonify({'error': 'Not enough recognized symptoms. Please provide more symptoms.'}), 400
 
     # Model prediction
     try:
         proba = model.predict_proba([features])
         print("Prediction Probabilities:", proba)
+        
+        # Check if we have meaningful prediction values
+        max_probability = max(proba[0])
+        if max_probability < 0.1:  # If highest probability is less than 10%
+            return jsonify({'error': 'The symptom combination does not match known disease patterns. Please provide more specific symptoms.'}), 400
+            
     except Exception as e:
         print(f"Model Prediction Error: {str(e)}")
         return jsonify({'error': str(e), 'message': 'Prediction failed.'}), 500

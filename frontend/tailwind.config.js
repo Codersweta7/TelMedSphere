@@ -28,6 +28,7 @@ module.exports = {
         "landing-bg":
           "linear-gradient(white 20%, #d4ddf1 40%, #b0bbd8 60%, #6575a5 80%, #4a4cb2 100%)",
         "search-patients": "url('/search_patients.png')",
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
       },
       textShadow: {
         "landing-highlight": "2px 2px 4px rgba(0, 0, 0, 0.3)",
@@ -49,11 +50,15 @@ module.exports = {
       animation: {
         spark: "spark 1.5s linear infinite",
         "pulse-custom": "pulse 2s infinite",
+        "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         fadeIn: "fadeIn 1.5s ease-in-out",
         fadeInLeft: "fadeInLeft 1.5s ease-in-out forwards",
         maintain: "maintain 2s linear infinite",
         rotate: "rotate 2s linear infinite",
         blink: "blink 0.7s infinite",
+        float: "float 3s ease-in-out infinite",
+        "float-delayed": "float 3.5s ease-in-out 0.1s infinite",
+        "float-slow": "float 4s ease-in-out 0.2s infinite",
         progressFill: "progressFill 2s linear forwards",
       },
       keyframes: {
@@ -76,6 +81,14 @@ module.exports = {
           "50%": {
             transform: "scale(1.1)",
             opacity: "1",
+          },
+        },
+        float: {
+          "0%, 100%": { 
+            transform: "translateY(0)",
+          },
+          "50%": {
+            transform: "translateY(-10px)",
           },
         },
         fadeIn: {

@@ -162,8 +162,11 @@ class DP extends Component {
   updateSymptoms = (user_symptoms) => {
     this.setState({ user_symptoms });
     this.setState({ user_symptom_length: user_symptoms.length });
-    if (user_symptoms.length > 0) {
+    // Enable button only if there are at least 2 symptoms for more accurate prediction
+    if (user_symptoms.length >= 2) {
       this.setState({ button_is_disabled: false });
+    } else {
+      this.setState({ button_is_disabled: true });
     }
   };
 
@@ -287,17 +290,38 @@ class DP extends Component {
             result={result}
           />
         ) : (
-          <p
-            ref={(el) => {
-              if (el) {
-                setTimeout(() => {
-                  if (el) el.innerText = "Error predicting disease.";
-                }, 10000);
-              }
-            }}
-          >
-            Loading disease possibility...
-          </p>
+          <div className="text-center p-4">
+            <p
+              ref={(el) => {
+                if (el) {
+                  setTimeout(() => {
+                    if (el && this.state.disease_possibility.length === 0) {
+                      el.innerHTML = 
+                      `<div class="text-red-500 mb-4">
+                         <h3>Error predicting disease</h3>
+                         <p>We encountered an issue processing your symptoms.</p>
+                       </div>
+                       <div>
+                         <p>This could be due to:</p>
+                         <ul class="list-disc text-left ml-8 mt-2">
+                           <li>Not enough symptoms selected</li>
+                           <li>Connection issues with our prediction service</li>
+                           <li>The symptoms combination doesn't match known patterns</li>
+                         </ul>
+                         <p class="mt-4">Please go back and try again with different symptoms.</p>
+                       </div>`;
+                    }
+                  }, 5000); // Reduced timeout to 5 seconds
+                }
+              }}
+              className="text-blue-7 dark:text-white-1"
+            >
+              <div className="flex justify-center items-center flex-col">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-9 mb-4"></div>
+                Loading disease possibility...
+              </div>
+            </p>
+          </div>
         );
     }
   };
