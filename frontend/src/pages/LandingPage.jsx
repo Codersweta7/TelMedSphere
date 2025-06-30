@@ -16,7 +16,7 @@ import Preloader from "../components/common/Preloader";
 import commonContext from "../contexts/common/commonContext";
 import useScrollDisable from "../hooks/useScrollDisable";
 // import bg from "../assets/landing-bg.png";
-import bg from "../assets/Hero.jpg";
+import bg from "../assets/Hero.png";
 import need from "../assets/need.png";
 import profiles from "../data/teamData";
 import TestimonialSection from "../components/landingPage/TestimonialCarousel";
@@ -175,7 +175,7 @@ const LandingPage = () => {
                     <div className="flex flex-wrap gap-4">
                       <button
                         onClick={() => navigate("/doctors")}
-                        className="px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-medium rounded-lg transition-all shadow-md hover:shadow-lg dark:from-blue-600 dark:to-blue-700 dark:hover:from-blue-700 dark:hover:to-blue-800"
+                        className="px-8 py-3 bg-gradient-to-r text-white-1 from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-medium rounded-lg transition-all shadow-md hover:shadow-lg dark:from-blue-600 dark:to-blue-700 dark:hover:from-blue-700 dark:hover:to-blue-800"
                       >
                         Find a Doctor
                       </button>
@@ -189,66 +189,37 @@ const LandingPage = () => {
                   </div>
                 </div>
 
-                {/* Image content with enhanced presentation */}
+                
                 <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-                  <div className="relative w-full group transition-all duration-500 hover:scale-[1.02]">
-                    {/* Enhanced background ambient glow - adjusted for shorter image */}
-                    <div className="absolute -inset-6 md:-inset-8 bg-gradient-to-br from-blue-100/90 via-[#eef6ff]/80 to-indigo-100/60 
-                    dark:from-blue-700/20 dark:via-blue-600/15 dark:to-indigo-700/20 blur-2xl z-0 animate-pulse-slow rounded-full"></div>
-                    
-                    {/* Seamless integration layer with improved dark mode support */}
-                    <div className="absolute -inset-4 md:-inset-6 bg-gradient-to-br from-white/50 to-blue-100/40 
-                    dark:from-blue-700/10 dark:to-indigo-800/10 backdrop-blur-sm z-5 rounded-[35px]"></div>
-                    
-                    {/* Additional ambient light effect - contained */}
-                    <div className="absolute -inset-10 md:-inset-12 bg-gradient-radial from-blue-50/20 via-transparent to-transparent
-                    dark:from-blue-500/5 dark:via-transparent blur-3xl opacity-70 z-0"></div>
-
-                    {/* Main image with no border and controlled size - fully displayed and improved for dark mode */}
-                    <div className="relative overflow-hidden z-10 rounded-[30px] shadow-xl max-h-[400px] md:max-h-[450px] flex items-center justify-center">
+                  <div className="relative w-full max-w-lg transform transition-all duration-500 hover:scale-[1.02]">
+                  
+                    <div className="relative z-10 flex items-center justify-center">
                       <img
                         src={bg}
                         alt="Healthcare professionals"
-                        className="relative w-full h-full object-contain transform hover:scale-[1.03] transition-all duration-700 animate-float-slow"
+                        className="w-full h-auto object-contain max-h-[350px] sm:max-h-[350px] md:max-h-[400px] lg:max-h-[450px] transform hover:scale-[1.03] transition-all duration-700 animate-float-slow"
+                        style={{
+                          filter: "drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1))"
+                        }}
                       />
-                      
-                      {/* Enhanced overlay for better blending in both light and dark mode */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-blue-100/10 via-transparent to-blue-50/10 dark:from-blue-900/30 dark:via-transparent dark:to-blue-800/20 mix-blend-multiply"></div>
-                      
-                      {/* Additional light effect for depth */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent dark:from-blue-400/5 dark:via-transparent mix-blend-overlay"></div>
+                    
+                    
                     </div>
 
-                    {/* Floating accent elements - compact and enhanced for better visibility */}
-                    <div className="absolute -top-3 -right-3 w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white shadow-lg dark:from-blue-500 dark:to-blue-700 dark:text-blue-50 dark:shadow-blue-900/50 z-20 animate-float">
-                      <div className="absolute inset-0.5 bg-gradient-to-br from-white/10 to-transparent rounded-full"></div>
-                      <TbStethoscope className="text-2xl relative z-10" />
+                   
+
+                    {/* Floating accent elements - positioned for better responsiveness */}
+                    <div className="absolute -top-3 -left-3 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white shadow-lg dark:from-blue-500 dark:to-blue-700 dark:text-blue-50 dark:shadow-blue-900/50 z-20 animate-float">
+                      <TbStethoscope className="text-xl sm:text-2xl relative z-10" />
                     </div>
-                    <div className="absolute -bottom-3 -left-3 w-14 h-14 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-full flex items-center justify-center text-white shadow-lg dark:from-indigo-500 dark:to-indigo-700 dark:text-indigo-50 dark:shadow-indigo-900/50 z-20 animate-float-delayed">
-                      <div className="absolute inset-0.5 bg-gradient-to-br from-white/10 to-transparent rounded-full"></div>
-                      <MdOutlineHealthAndSafety className="text-2xl relative z-10" />
-                    </div>
-                    
-                    {/* Additional floating accent for visual interest - positioned for compact display */}
-                    <div className="absolute top-1/2 -right-2 transform -translate-y-1/2 w-10 h-10 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full flex items-center justify-center text-white shadow-md dark:from-blue-400 dark:to-indigo-600 z-20 animate-float-slow opacity-80">
-                      <div className="absolute inset-0.5 bg-gradient-to-br from-white/10 to-transparent rounded-full"></div>
-                      <IoAccessibility className="text-lg relative z-10" />
+                    <div className="absolute -bottom-3 -left-3 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-full flex items-center justify-center text-white shadow-lg dark:from-indigo-500 dark:to-indigo-700 dark:text-indigo-50 dark:shadow-indigo-900/50 z-20 animate-float-delayed">
+                      <MdOutlineHealthAndSafety className="text-xl sm:text-2xl relative z-10" />
                     </div>
                     
-                    {/* Compact decorative elements with better dark mode support */}
-                    <div className="absolute bottom-1/4 -right-6 w-24 h-24 bg-blue-300/30 dark:bg-blue-600/15 rounded-full blur-xl animate-pulse-slow"></div>
-                    <div className="absolute top-1/3 -left-6 w-20 h-20 bg-indigo-300/30 dark:bg-indigo-600/15 rounded-full blur-xl animate-float-delayed"></div>
-                    
-                    {/* Small accent dots */}
-                    <div className="absolute top-1/3 -right-4 w-3 h-3 bg-blue-500 dark:bg-blue-400 rounded-full animate-pulse"></div>
-                    <div className="absolute top-2/3 -left-3 w-2 h-2 bg-indigo-500 dark:bg-indigo-400 rounded-full animate-pulse-slow"></div>
-                    
-                    {/* Light effect bursts - compact */}
-                    <div className="hidden md:block absolute -right-10 top-1/4 w-24 h-24 bg-gradient-to-br from-blue-300/20 to-indigo-300/20 dark:from-blue-500/10 dark:to-indigo-500/10 rounded-full blur-xl z-[-1]"></div>
-                    <div className="hidden md:block absolute -left-10 bottom-1/4 w-20 h-20 bg-gradient-to-tl from-indigo-300/10 to-blue-300/10 dark:from-indigo-500/5 dark:to-blue-500/5 rounded-full blur-xl z-[-1] animate-float-slow"></div>
-                    
-                    {/* Shimmer effect */}
-                    <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent dark:via-blue-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 z-20 pointer-events-none"></div>
+                    {/* Repositioned additional floating accent */}
+                    <div className="absolute top-1/2 -right-2 transform -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full flex items-center justify-center text-white shadow-md dark:from-blue-400 dark:to-indigo-600 z-20 animate-float-slow opacity-80">
+                      <IoAccessibility className="text-sm sm:text-lg relative z-10" />
+                    </div>
                   </div>
                 </div>
               </div>

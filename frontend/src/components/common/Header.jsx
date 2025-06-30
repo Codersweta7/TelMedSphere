@@ -274,6 +274,20 @@ const Header = () => {
                       INFO
                     </span>
                   </div>
+                  <div
+                    className={`hover:text-blue-9 content-none transition-all duration-300 text-[0.9em] pt-[13px] pb-2 inline-flex items-center dark:hover:text-blue-2 ${
+                      curPath === "/about"
+                        ? "text-blue-9 border-b-[2px] border-blue-9 dark:text-blue-32 dark:border-blue-5"
+                        : "dark:text-white-1 text-blue-8"
+                    }`}
+                  >
+                    <span
+                      onClick={() => navigate("/about")}
+                      className="cursor-pointer font-bold"
+                    >
+                      ABOUTUS
+                    </span>
+                  </div>
 
                   <div
                     className="relative hover:text-blue-9  transition-all duration-300 text-[0.9em] pt-[13px] pb-2 text-blue-8 dark:text-white-1 dark:hover:text-blue-2 "
@@ -510,6 +524,25 @@ const Header = () => {
                             className="cursor-pointer font-bold text-center w-full"
                           >
                             HEALTH BLOGS
+                          </span>
+                        </div>
+
+                        {/* About Us link for mobile */}
+                        <div
+                          className={`hover:text-blue-9 content-none transition-all duration-300 text-[0.9em] pt-[13px] pb-2 inline-flex items-center dark:hover:text-blue-2 ${
+                            curPath === "/about"
+                              ? "text-blue-9 border-b-[2px] border-blue-9 dark:text-blue-32 dark:border-blue-5"
+                              : "dark:text-white-1 text-blue-8"
+                          }`}
+                        >
+                          <span
+                            onClick={() => {
+                              navigate("/about");
+                              setSideBarOpen((prev) => !prev);
+                            }}
+                            className="cursor-pointer font-bold text-center w-full"
+                          >
+                            ABOUT US
                           </span>
                         </div>
 
